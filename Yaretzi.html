@@ -15,25 +15,56 @@
       margin-bottom: 40px;
     }
 
+    .envelope-container {
+      perspective: 1000px;
+    }
+
     .envelope {
-      position: relative;
       width: 300px;
       height: 200px;
       margin: 0 auto;
-      background: #fff;
-      border: 2px solid #d6336c;
-      border-radius: 10px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-      overflow: hidden;
-      transition: transform 0.5s;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 1s;
+      cursor: pointer;
     }
 
-    .letter {
-      display: none;
+    .envelope.open {
+      transform: rotateX(180deg);
+    }
+
+    .front, .back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    .front {
+      background: #fff;
+      border: 2px solid #d6336c;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5em;
+      color: #d6336c;
+    }
+
+    .back {
+      background: #fff;
+      border: 2px solid #d6336c;
+      transform: rotateX(180deg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
       padding: 20px;
+      box-sizing: border-box;
       color: #333;
-      font-size: 1.2em;
+      font-size: 1.1em;
       line-height: 1.5;
+      white-space: pre-line;
     }
 
     button {
@@ -57,14 +88,17 @@
 
   <h1>💌 Tengo algo para ti...</h1>
 
-  <div class="envelope" id="envelope">
-    <div class="letter" id="letter">
-      Querida [Nombre],<br><br>
-      A pesar de los kilómetros que nos separan, cada latido mío te recuerda. 
-      Esta carta es solo una pequeña muestra del amor inmenso que siento por ti. 
-      Te extraño, te pienso y te amo con todo mi corazón. <br><br>
-      Con todo mi amor,<br>
-      [Tu Nombre]
+  <div class="envelope-container">
+    <div class="envelope" id="envelope">
+      <div class="front">📩 Haz clic para abrir</div>
+      <div class="back" id="letter">
+        Querida [Nombre],<br><br>
+        A pesar de los kilómetros que nos separan, cada latido mío te recuerda. <br>
+        Esta carta es solo una pequeña muestra del amor inmenso que siento por ti. <br>
+        Te extraño, te pienso y te amo con todo mi corazón. <br><br>
+        Con todo mi amor,<br>
+        [Tu Nombre]
+      </div>
     </div>
   </div>
 
@@ -72,7 +106,8 @@
 
   <script>
     function openLetter() {
-      document.getElementById("letter").style.display = "block";
+      const envelope = document.getElementById('envelope');
+      envelope.classList.toggle('open');
     }
   </script>
 
