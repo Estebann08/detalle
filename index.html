@@ -1,0 +1,239 @@
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Para Yaretzi</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom right, #ffe0e9, #fff3f8);
+      font-family: 'Segoe UI', sans-serif;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .envelope-wrapper {
+      width: 95%;
+      max-width: 800px;
+      height: 90vh;
+      margin: auto;
+      margin-top: 20px;
+      perspective: 1000px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .envelope {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 1.2s ease-in-out;
+      cursor: pointer;
+      border-radius: 12px;
+    }
+
+    .envelope.opened {
+      transform: rotateX(180deg);
+    }
+
+    .envelope-front,
+    .envelope-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 12px;
+      backface-visibility: hidden;
+      overflow: hidden;
+      border: 4px solid #d6336c;
+      background: #fff;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    .envelope-front {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.2em;
+      color: #d6336c;
+      z-index: 2;
+    }
+
+    .envelope-back {
+      transform: rotateX(180deg);
+      padding: 30px;
+      box-sizing: border-box;
+      overflow-y: auto;
+      font-size: 1.1em;
+      line-height: 1.7;
+      color: #333;
+      text-align: justify;
+    }
+
+    .envelope-back::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .envelope-back::-webkit-scrollbar-thumb {
+      background: #d6336c;
+      border-radius: 5px;
+    }
+
+    .instruction {
+      position: absolute;
+      top: 10px;
+      width: 100%;
+      text-align: center;
+      font-size: 1em;
+      color: #a61e4d;
+      animation: blink 1.5s infinite;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    @media (max-width: 600px) {
+      .envelope-wrapper {
+        height: 85vh;
+      }
+
+      .envelope-back {
+        font-size: 1em;
+        padding: 20px;
+      }
+
+      .envelope-front {
+        font-size: 2em;
+      }
+
+      .instruction {
+        font-size: 0.95em;
+        padding: 0 10px;
+      }
+    }
+
+    /* Corazones flotantes */
+    .hearts-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: #ff7eb9;
+      transform: rotate(45deg);
+      animation: floatHeart 8s linear infinite;
+      opacity: 0.8;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: #ff7eb9;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -10px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: -10px;
+      top: 0;
+    }
+
+    @keyframes floatHeart {
+      0% {
+        transform: translateY(100vh) rotate(45deg) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-10vh) rotate(45deg) scale(1.5);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Corazones -->
+  <div class="hearts-container" id="hearts-container"></div>
+
+  <!-- Carta -->
+  <div class="envelope-wrapper">
+    <div class="instruction">haz click aqui amorr ochh</div>
+    <div class="envelope" id="envelope">
+      <div class="envelope-front">💌</div>
+      <div class="envelope-back" id="letter">
+Querida Yaretzi,
+
+Solo queria recordarte que tan especial eres para mi, quiero que sepas que estos fueron los 9 meses mas felices de mi vida
+y lo fueron gracias a ti. No hay dia que no este agradecido de tenerte ya que haces mis dias mas bellos con cada palabra que
+diriges hacia mi, habernos conocido incluso de una forma tan poco convencional, sin duda es lo mejor que he ma pasado.
+Nunca me paso por la mente llegar a conocer a alguien justo en ese momento, parece como si simplemente estuvieramos ahi
+porque era algo que tenia que pasar, como si nos hubieran puesto meticulosanmente para llegar a donde estamos ahora yo nunca crei
+en un destino o que mi vida ya estuviera escrita pero la forma en la que te conoci me hace dudar de eso, me rehuso a creer que fue
+mera casualidad, cualquier minimo cambio en los hechos y no seriamos tu y yo. 
+
+Por eso creo, con todas mis fuerzas que estamos hechos para estar juntos, incluso si no fuera asi daria todo de mi para estar contigo
+porque yo no quiero a nadie mas, solo quiero que seas tu, solo tu y nadie mas. No es facil de expresar todo lo que siento por ti
+mis sentimientos jamas habian sido tan fuertes, tu sentido del humor, tu forma tan unica de expresarte, tu forma de hablar, tu risa,
+tu manera de chivearte cuando te digo cosas cursis, tu capacidad de hacerme reir incluso en el peor de mis dias, tus detalles hacia mi
+la forma en la que me dices que me amas, tus ojos, tus labios, tu cabello, tu piel, tus cachetes, tus pestañas, tus cejas,
+tu nariz, tu cuerpo, todo de ti es tan especial, asombroso y atractivo y no lo cambiaria
+por nada en el mundo, eres de lejos lo mas importante y valioso para mi.
+
+Te amo y grabatelo bien en tu cabezota de kesita rancia
+
+Con amor,  
+Gael.
+ </div>
+    </div>
+  </div>
+
+  <script>
+    // Animación del sobre
+    const envelope = document.getElementById('envelope');
+    envelope.addEventListener('click', () => {
+      envelope.classList.toggle('opened');
+    });
+
+    // Corazones animados
+    const heartContainer = document.getElementById('hearts-container');
+
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (6 + Math.random() * 4) + 's';
+      heart.style.opacity = Math.random();
+      heart.style.transform = `rotate(45deg) scale(${0.5 + Math.random()})`;
+      heartContainer.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 10000);
+    }
+
+    setInterval(createHeart, 300);
+  </script>
+
+</body>
+</html>
