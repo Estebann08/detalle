@@ -1,0 +1,80 @@
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Una carta para ti</title>
+  <style>
+    body {
+      background: linear-gradient(to bottom right, #ffe0e9, #fff3f8);
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      padding: 50px;
+    }
+
+    h1 {
+      color: #d6336c;
+      margin-bottom: 40px;
+    }
+
+    .envelope {
+      position: relative;
+      width: 300px;
+      height: 200px;
+      margin: 0 auto;
+      background: #fff;
+      border: 2px solid #d6336c;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: transform 0.5s;
+    }
+
+    .letter {
+      display: none;
+      padding: 20px;
+      color: #333;
+      font-size: 1.2em;
+      line-height: 1.5;
+    }
+
+    button {
+      margin-top: 30px;
+      padding: 10px 20px;
+      font-size: 1em;
+      background-color: #d6336c;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #ad1f50;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>💌 Tengo algo para ti...</h1>
+
+  <div class="envelope" id="envelope">
+    <div class="letter" id="letter">
+      Querida [Nombre],<br><br>
+      A pesar de los kilómetros que nos separan, cada latido mío te recuerda. 
+      Esta carta es solo una pequeña muestra del amor inmenso que siento por ti. 
+      Te extraño, te pienso y te amo con todo mi corazón. <br><br>
+      Con todo mi amor,<br>
+      [Tu Nombre]
+    </div>
+  </div>
+
+  <button onclick="openLetter()">Abrir Carta</button>
+
+  <script>
+    function openLetter() {
+      document.getElementById("letter").style.display = "block";
+    }
+  </script>
+
+</body>
+</html>
